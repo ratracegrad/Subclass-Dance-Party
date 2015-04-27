@@ -3,13 +3,13 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-color:#fff;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton{
+.title, .addDancerButton, .lineUpButton{
   padding:5px 12px;
   float:right;
 }
@@ -21,7 +21,46 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
+  border:10px solid yellow;
   border-radius:10px;
   position:absolute;
 }
+.moonWalker {
+  border: 10px solid green;
+  border-radius: 10px;
+  position: absolute;
+  background: url('src/mjackson.jpg');
+  height: 50px;
+  width: 50px;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+.moonWalkerRight {
+  border: 10px solid green;
+  border-radius: 10px;
+  position: absolute;
+  background: url('src/mjackson.jpg');
+  height: 50px;
+  width: 50px;
+  -ms-transform: rotate(0deg); /* IE 9 */
+  -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+  transform: rotate(0deg);
+}
+.popDancer{
+  border: 5px dashed red;
+  position:absolute;
+  width: 20px;
+  height: 40px;
+  background-color: purple;
+  -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+  transition: width 2s;
+}
+.popDancer:hover {
+    width: 200px;
+    background-color: chartreuse;
+}
+.linedUp{
+  left: 100px;
+}
+

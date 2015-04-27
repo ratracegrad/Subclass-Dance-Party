@@ -1,19 +1,27 @@
-var makeBlinkyDancer = function(top, left, timeBetweenSteps){
-  var blinkyDancer = makeDancer(top, left, timeBetweenSteps);
+var BlinkyDancer = function(top, left, timeBetweenSteps){
+  Dancer.call(this, top, left, timeBetweenSteps);
 
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
+  this._top = top;
+  this._left = left;
+};
 
-  var oldStep = blinkyDancer.step;
+BlinkyDancer.prototype = Object.create(Dancer.prototype);
+BlinkyDancer.prototype.constructor = BlinkyDancer;
 
-  blinkyDancer.step = function(){
-    // call the old version of step at the beginning of any call to this new version of step
-    oldStep();
-    // toggle() is a jQuery method to show/hide the <span> tag.
-    // See http://api.jquery.com/category/effects/ for this and
-    // other effects you can use on a jQuery-wrapped html tag.
-    blinkyDancer.$node.toggle();
-  };
+BlinkyDancer.prototype.step = function() {
+  Dancer.prototype.step.call(this);
+  this.$node.toggle();
 
-  return blinkyDancer;
+  // changes top and left to make it move
+  this._top = $("body").height() * Math.random();
+  this._left = $("body").width() * Math.random();
+  this.setPosition(this._top, this._left);
+
+  // alternate colors
+  if (this.$node.css('border') === '10px solid rgb(255, 255, 0)' && this.$node.css('display') === 'block'){
+    this.$node.css('border', '10px solid blue');
+  }
+  else if (this.$node.css('display') === 'block'){
+    this.$node.css('border', '10px solid rgb(255, 255, 0)');
+  }
 };
